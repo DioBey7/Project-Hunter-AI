@@ -99,8 +99,7 @@ Avcının hedefini öngörebilmesi için hedefin ivmesini okuması gerekir.
 
 Bu karanlık simülasyonun arkasındaki zihniyet, yazılım mühendisliği ile ses/atmosfer tasarımını birleştirmektir. Sektördeki profesyonellerle tanışmaktan, geri bildirim almaktan ve yeni ufuklara yelken açmaktan her zaman onur duyarım. Benimle aşağıdaki kanallardan iletişime geçebilirsiniz:
 
-* **Geliştirici:** Beyza Yazıcı 
-* **LinkedIn:** [linkedin.com/in/beyza-yazici-linkiniz](https://linkedin.com)
+* **LinkedIn:** www.linkedin.com/in/beyza-yazıcı-400183332
 * **E-Posta:** iletisim@eposta-adresiniz.com
 * **GitHub:** [github.com/DioBey7](https://github.com/DioBey7)
 
