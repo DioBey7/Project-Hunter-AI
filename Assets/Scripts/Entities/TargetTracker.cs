@@ -12,7 +12,8 @@ public class TargetTracker : MonoBehaviour
 
     void Update()
     {
-        Velocity = (transform.position - _lastPosition) / Time.deltaTime;
+        Vector3 rawVelocity = (transform.position - _lastPosition) / Time.deltaTime;
+        Velocity = Vector3.Lerp(Velocity, rawVelocity, 15f * Time.deltaTime);
         _lastPosition = transform.position;
     }
 }

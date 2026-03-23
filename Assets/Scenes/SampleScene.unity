@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -256,6 +257,21 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1075581e7bbeb04eab6b611b62126e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1590941572}
+  offset: {x: 0, y: 8, z: -8}
+  smoothSpeed: 5
 --- !u!1 &408074173
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +517,7 @@ GameObject:
   - component: {fileID: 947633160}
   - component: {fileID: 947633159}
   - component: {fileID: 947633163}
+  - component: {fileID: 947633164}
   m_Layer: 0
   m_Name: Av
   m_TagString: Untagged
@@ -591,7 +608,7 @@ Transform:
   m_GameObject: {fileID: 947633158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: 0, z: 20}
+  m_LocalPosition: {x: -10, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -609,6 +626,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285160faa88b9dd43b125580e197ab04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &947633164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947633158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f99b3ba06d794148af172b995236ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 6
+  rotationSpeed: 12
 --- !u!1 &1489103489
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +690,7 @@ MonoBehaviour:
     m_Bits: 8
   gridWorldSize: {x: 50, y: 50}
   nodeRadius: 0.5
+  displayGridGizmos: 0
 --- !u!114 &1489103492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,11 +863,10 @@ MonoBehaviour:
   - {fileID: 408074174}
   - {fileID: 1573825370}
   - {fileID: 864487056}
-  fovRange: 6
-  baseHearingRange: 3
-  hunterSpeed: 5
-  patrolSound: {fileID: 8300000, guid: 27b429cf5551ab640a911c459d1766dc, type: 3}
-  chaseSound: {fileID: 8300000, guid: 0c5dcb5ace568cf45838d15eb44ce1ce, type: 3}
+  profile: {fileID: 11400000, guid: a6d6dfbbb2bbff6488b5ae81744d21b6, type: 2}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!120 &1590941574
 LineRenderer:
   serializedVersion: 2
@@ -904,7 +935,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0, g: 0.13440752, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -929,7 +960,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0

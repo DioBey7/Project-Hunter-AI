@@ -5,12 +5,13 @@ public class TaskPatrol : BTNode
 {
     private Transform _transform;
     private Transform[] _waypoints;
+    private Pathfinding _pathfinding;
+    private LineRenderer _lineRenderer;
     private int _currentWaypointIndex = 0;
     private float _speed = 2f;
-    private Pathfinding _pathfinding;
     private List<Vector3> _currentPath;
     private int _pathIndex;
-    private LineRenderer _lineRenderer;
+    private float _pathUpdateTimer = 0f;
 
     public TaskPatrol(Transform transform, Transform[] waypoints, Pathfinding pathfinding, LineRenderer lineRenderer)
     {
@@ -22,55 +23,61 @@ public class TaskPatrol : BTNode
 
     public override NodeState Evaluate()
     {
+        if (_waypoints == null || _waypoints.Length == 0) return NodeState.Failure;
+
         Transform wp = _waypoints[_currentWaypointIndex];
-        
-        if (Vector3.Distance(_transform.position, wp.position) < 0.1f)
+        _pathUpdateTimer -= Time.deltaTime;
+
+        if (_pathUpdateTimer <= 0f || _currentPath == null)
+        {
+            _currentPath = _pathfinding.FindPath(_transform.position, wp.position);
+            _pathIndex = 0;
+            _pathUpdateTimer = 0.5f;
+        }
+
+        if (_currentPath != null && _pathIndex < _currentPath.Count)
+        {
+            Vector3 currentWaypoint = _currentPath[_pathIndex];
+            _transform.position = Vector3.MoveTowards(_transform.position, currentWaypoint, _speed * Time.deltaTime);
+
+            Vector3 direction = currentWaypoint - _transform.position;
+            if (direction.magnitude > 0.1f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                _transform.rotation = Quaternion.Slerp(_transform.rotation, targetRotation, 5f * Time.deltaTime);
+            }
+
+            if (Vector3.Distance(_transform.position, currentWaypoint) < 0.6f)
+            {
+                _pathIndex++;
+            }
+
+            if (_lineRenderer != null)
+            {
+                int remainingNodes = _currentPath.Count - _pathIndex;
+                if (remainingNodes > 0)
+                {
+                    _lineRenderer.positionCount = remainingNodes;
+                    for (int i = 0; i < remainingNodes; i++)
+                    {
+                        _lineRenderer.SetPosition(i, _currentPath[i + _pathIndex]);
+                    }
+                }
+                else
+                {
+                    _lineRenderer.positionCount = 0;
+                }
+            }
+        }
+
+        if (Vector3.Distance(_transform.position, wp.position) < 1.5f)
         {
             _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
             _currentPath = null;
-            if (_lineRenderer != null) _lineRenderer.positionCount = 0;
-        }
-        else
-        {
-            if (_currentPath == null || _currentPath.Count == 0)
-            {
-                _currentPath = _pathfinding.FindPath(_transform.position, wp.position);
-                _pathIndex = 0;
-            }
-
-            if (_currentPath != null && _currentPath.Count > 0)
-            {
-                if (_lineRenderer != null)
-                {
-                    _lineRenderer.positionCount = _currentPath.Count - _pathIndex;
-                    for (int i = _pathIndex; i < _currentPath.Count; i++)
-                    {
-                        _lineRenderer.SetPosition(i - _pathIndex, _currentPath[i]);
-                    }
-                }
-
-                if (_pathIndex < _currentPath.Count)
-                {
-                    Vector3 currentPathNode = _currentPath[_pathIndex];
-                    if (Vector3.Distance(_transform.position, currentPathNode) < 0.1f)
-                    {
-                        _pathIndex++;
-                        if (_pathIndex < _currentPath.Count)
-                        {
-                            currentPathNode = _currentPath[_pathIndex];
-                        }
-                    }
-
-                    if (_pathIndex < _currentPath.Count)
-                    {
-                        _transform.position = Vector3.MoveTowards(_transform.position, currentPathNode, _speed * Time.deltaTime);
-                        _transform.LookAt(currentPathNode);
-                    }
-                }
-            }
         }
 
         state = NodeState.Running;
         return state;
     }
 }
+

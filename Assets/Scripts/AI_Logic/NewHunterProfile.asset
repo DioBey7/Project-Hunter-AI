@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 240adb400a8ca7243a34d7418f74ab72, type: 3}
+  m_Name: NewHunterProfile
+  m_EditorClassIdentifier: 
+  baseSpeed: 5
+  fovRadius: 8
+  fovAngle: 90
+  baseHearingRange: 5
+  catchRadius: 1.2
+  patrolSound: {fileID: 8300000, guid: 27b429cf5551ab640a911c459d1766dc, type: 3}
+  chaseSound: {fileID: 8300000, guid: 0c5dcb5ace568cf45838d15eb44ce1ce, type: 3}
+  catchSound: {fileID: 8300000, guid: 18881a29a41caf44f806e35a2e02d5cc, type: 3}
+  minAudioPitch: 0.8
+  maxAudioPitch: 1.3

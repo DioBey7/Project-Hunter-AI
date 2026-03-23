@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 public class Pathfinding : MonoBehaviour
 {
-    GridManager grid;
+    private GridManager _grid;
 
     void Awake()
     {
-        grid = GetComponent<GridManager>();
+        _grid = GetComponent<GridManager>();
     }
 
     public List<Vector3> FindPath(Vector3 startPos, Vector3 targetPos)
     {
-        Node startNode = grid.NodeFromWorldPoint(startPos);
-        Node targetNode = grid.NodeFromWorldPoint(targetPos);
+        Node startNode = _grid.NodeFromWorldPoint(startPos);
+        Node targetNode = _grid.NodeFromWorldPoint(targetPos);
 
         List<Node> openSet = new List<Node>();
         HashSet<Node> closedSet = new HashSet<Node>();
@@ -38,14 +38,15 @@ public class Pathfinding : MonoBehaviour
                 return RetracePath(startNode, targetNode);
             }
 
-            foreach (Node neighbor in grid.GetNeighbors(currentNode))
+            foreach (Node neighbor in _grid.GetNeighbors(currentNode))
             {
                 if (!neighbor.isWalkable || closedSet.Contains(neighbor))
                 {
                     continue;
                 }
 
-                int newMovementCostToNeighbor = currentNode.gCost + GetDistance(currentNode, neighbor);
+                int newMovementCostToNeighbor = currentNode.gCost + GetDistance(currentNode, neighbor) + neighbor.terrainCost;
+                
                 if (newMovementCostToNeighbor < neighbor.gCost || !openSet.Contains(neighbor))
                 {
                     neighbor.gCost = newMovementCostToNeighbor;
@@ -62,7 +63,7 @@ public class Pathfinding : MonoBehaviour
         return new List<Vector3>();
     }
 
-    List<Vector3> RetracePath(Node startNode, Node endNode)
+    private List<Vector3> RetracePath(Node startNode, Node endNode)
     {
         List<Node> path = new List<Node>();
         Node currentNode = endNode;
@@ -74,23 +75,29 @@ public class Pathfinding : MonoBehaviour
         }
         path.Reverse();
 
-        grid.path = path;
+        _grid.path = path;
 
         List<Vector3> waypoints = new List<Vector3>();
-        foreach (Node n in path)
+        Vector2 directionOld = Vector2.zero;
+
+        for (int i = 1; i < path.Count; i++)
         {
-            waypoints.Add(n.worldPosition);
+            Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
+            if (directionNew != directionOld)
+            {
+                waypoints.Add(path[i].worldPosition);
+            }
+            directionOld = directionNew;
         }
         return waypoints;
     }
 
-    int GetDistance(Node nodeA, Node nodeB)
+    private int GetDistance(Node nodeA, Node nodeB)
     {
         int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
         int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
 
-        if (dstX > dstY)
-            return 14 * dstY + 10 * (dstX - dstY);
+        if (dstX > dstY) return 14 * dstY + 10 * (dstX - dstY);
         return 14 * dstX + 10 * (dstY - dstX);
     }
 }
