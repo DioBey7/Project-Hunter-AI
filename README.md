@@ -3,17 +3,35 @@
   <h3>Audio-Driven Predictive AI & Behavior Tree Simulation</h3>
   <br>
   <i>"Bir oyunun gerilimini yaratan şey düşmanın ne kadar güçlü olduğu değil; <br> nefesinizi ne kadar iyi dinlediği ve bir sonraki adımınızı ne kadar iyi tahmin ettiğidir."</i>
+  <br>
+  <i>"What creates a game's tension is not how powerful the enemy is; <br> but how well it listens to your breath and predicts your next move."</i>
 </div>
 
 <br>
 
-**Project Hunter**, oyuncunun psikolojisiyle oynamak üzere tasarlanmış otonom bir hayatta kalma-gerilim yapay zekasıdır. Unity oyun motoru üzerinde tamamen sıfırdan inşa edilen bu sistem; sıradan ve hantal `if/else` yığınlarını reddeder. Bunun yerine, modern oyun endüstrisinin standardı olan **Modüler Davranış Ağacı (Behavior Tree)** mimarisini, matematiğin kusursuzluğu ve karanlık, dinamik bir ses tasarımıyla (Audio-Driven) tek bir zihinde birleştirir.
+---
 
-Bu sistem sadece bir düşman kodu değildir; oyuncunun ayak seslerini dinleyen, zemin akustiğini analiz eden, görsel engelleri fark eden ve vektörel hesaplamalarla saniyeler sonrasını öngörerek avını köşeye sıkıştıran dijital bir avcıdır.
+## 🇹🇷 Türkçe Versiyon | 🇬🇧 English Version
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler & Mühendislik Araçları
+### 🇹🇷 Türkçe
+
+**Project Hunter**, oyuncunun psikolojisiyle oynamak üzere tasarlanmış otonom bir hayatta kalma-gerilim yapay zekasıdır. Unity oyun motoru üzerinde tamamen sıfırdan inşa edilen bu sistem, bilgisayar vizyonu (Computer Vision), vektör matematiği (Vector Calculus) ve davranış ağacı (Behavior Tree) mimarisinin dehşetengiz bir sentezi.
+
+Bu sistem sadece bir düşman kodu değildir; oyuncunun ayak seslerini dinleyen, zemin akustiğini analiz eden, görsel engelleri fark eden ve vektörel hesaplamalarla saniyeler sonrasını öngören **duyarlı, prediktif ve ölümcül** bir yapay zekadır.
+
+---
+
+### 🇬🇧 English
+
+**Project Hunter** is an autonomous survival-horror artificial intelligence designed to manipulate the player's psychology. Built from scratch on the Unity game engine, this system is a terrifying synthesis of computer vision, vector calculus, and behavior tree architecture.
+
+This is not just enemy code; it's a **sentient, predictive, and lethal** AI that listens to the player's footsteps, analyzes floor acoustics, perceives visual obstacles, and predicts the future seconds ahead through vector mathematics.
+
+---
+
+## 🛠️ Kullanılan Teknolojiler & Mühendislik Araçları | Technologies & Engineering Tools
 
 <div align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" title="Unity 3D" alt="Unity" width="50" height="50"/>&nbsp;&nbsp;
@@ -22,103 +40,172 @@ Bu sistem sadece bir düşman kodu değildir; oyuncunun ayak seslerini dinleyen,
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" title="Git" alt="Git" width="50" height="50"/>
 </div>
 
-* **Oyun Motoru & Çevre (Engine):** Unity 6000.x (3D Core) — Gelişmiş Gizmos/Handles API (Taktiksel HUD tasarımı), Fizik Tabanlı Çevre Algılama (`Physics.Raycast`) ve Dinamik Bileşen Yönetimi.
-* **Programlama Dili:** C# (.NET) — Katı Nesne Yönelimli Programlama (OOP) prensipleri, Veri Odaklı Tasarım (`ScriptableObjects`) ve düşük dışa bağımlılık (Decoupled Design).
-* **Sistem Mimarisi:** Özel Davranış Ağacı (Custom Behavior Tree) — Hiyerarşik durum yönetimine (Sequence, Selector, Leaf Nodes) sahip modüler yapay zeka beyni.
-* **Matematik & Algoritmalar:** Graf Teorisi (Graph Theory) ile optimize edilmiş A* (A-Star) Pathfinding; Vektör Kalkülüsü (Vector Calculus) ve Kinetik Akıcılık (`Quaternion.Slerp`).
-* **İşitsel Dinamikler (Audio Engine):** Unity AudioSource API — Uzamsal ses (Spatial Blend) matematiği ve mesafeye dayalı Lerp interpolasyonu ile dinamik gerilim motoru.
+| Kategori | TR | EN |
+|:---|:---|:---|
+| **Oyun Motoru** | Unity 6000.x (3D Core) — Gelişmiş Gizmos/Handles API, Fizik Tabanlı Çevre Algılama | Unity 6000.x (3D Core) — Advanced Gizmos/Handles API, Physics-Based Environment Sensing |
+| **Programlama Dili** | C# (.NET) — Katı OOP, ScriptableObjects, Decoupled Design | C# (.NET) — Strict OOP, ScriptableObjects, Decoupled Architecture |
+| **Sistem Mimarisi** | Özel Davranış Ağacı (Custom Behavior Tree) — Hiyerarşik durum yönetimi | Custom Behavior Tree — Hierarchical State Management (Sequence, Selector, Leaf Nodes) |
+| **Matematik & Algoritmalar** | A* Pathfinding, Vektör Kalkülüsü, Quaternion.Slerp | A* Pathfinding, Vector Calculus, Quaternion.Slerp |
+| **İşitsel Dinamikler** | Unity AudioSource API — Uzamsal ses, Mesafeye dayalı interpolasyon | Unity AudioSource API — Spatial Audio, Distance-Based Interpolation |
 
 ---
 
-## ⚙️ Sistemin Sunduğu Derin Mekanikler
+## ⚙️ Sistemin Sunduğu Derin Mekanikler | Deep System Mechanics
 
-### 1. Kestirimci (Predictive) Hedefleme ve İleri Vektör Matematiği
-Standart yapay zeka sistemleri hedefin geçmişini takip ederken, Project Hunter geleceği hesaplar. Avcının zihni, hedefin anlık hız vektörünü ($v = \frac{\Delta x}{\Delta t}$) ölçerek zaman/mesafe denklemleri kurar. A* algoritması, avın o anki konumuna değil; kusursuz bir matematikle hesaplanmış **kesişim (pusu) noktasına** çizilir. 
+### 1. Kestirimli Hedefleme ve İleri Vektör Matematiği | Predictive Targeting & Advanced Vector Math
 
-### 2. Bilişsel Hafıza (Object Permanence) ve Gerçek Görüş Açısı
-Sistem, basit 0 ve 1 mantığıyla çalışmaz. Avcının görüş açısı (`Physics.Raycast` destekli) fiziksel duvarların arkasını göremez. Ancak av, görüş açısından veya duyma menzilinden çıksa bile sistem hemen hafızasını sıfırlamaz. **3 saniyelik Bilişsel Hafıza Tamponu (Memory Buffer)** sayesinde avcı, avın son bilinen rotasına doğru agresif bir şekilde depar atmaya devam eder. Bu, "Durum Atlama" (State Jumping) hatalarını engelleyen organik bir avlanma içgüdüsüdür.
+**🇹🇷 Türkçe:**
+Standart yapay zeka sistemleri hedefin geçmişini takip ederken, Project Hunter geleceği hesaplar. Avcının zihni, hedefin anlık hız vektörünü ($v = \frac{\Delta x}{\Delta t}$) ölçerek, avın bulunacağı noktayı zaman dilimi öncesinden hesaplar. Bu sayede rotası daima avın **arkasından gelmek** değil, avın yolunu kesmek üzere planlanır.
 
-### 3. Kinetik Akıcılık (Kinematic Smoothing) ve Optimizasyon
-A* algoritmasının işlemciyi (CPU) boğmasını ve "Pathfinding Paralysis" (olduğu yere çivilenme) hatalarını engellemek için rota hesaplamaları her frame'de değil, **0.15 saniyelik aralıklarla** yapılır. Avcı köşeleri dönerken robotik bir şekilde titremez; genişletilmiş hedef kabul yarıçapı ve `Quaternion.Slerp` matematiği sayesinde yörüngesinde pürüzsüz kavisler çizer.
-
-### 4. İşitsel Gerilim Yönetimi (Audio-Driven State Machine)
-Oyunun ses miksajı doğrudan yapay zekanın sinir sistemine (Behavior Tree) ve mesafesine bağlıdır. Avcı devriye modundayken sadece karakterin sinsi fısıltıları yankılanır. Hedef algılandığı an, fısıltılar yerini agresif kovalama ritimlerine bırakır. Avcı hedefe yaklaştıkça, aradaki mesafe vektörüne oranla sesin tınısı (Pitch) dinamik olarak `Mathf.Lerp` ile yükseltilir ve oyuncunun üzerindeki psikolojik baskı maksimize edilir.
+**🇬🇧 English:**
+While standard AI systems track the target's past, Project Hunter calculates the future. The hunter's mind measures the target's instantaneous velocity vector ($v = \frac{\Delta x}{\Delta t}$) and predicts where the prey will be seconds ahead. Thus, its route is never to chase from behind, but to **intercept the prey's path**.
 
 ---
 
-## 👁️ Siber-Optik Test Ekranı (Tactical HUD)
+### 2. Bilişsel Hafıza (Object Permanence) ve Gerçek Görüş Açısı | Cognitive Memory & True Line-of-Sight
 
-Klasik `Debug.Log` konsol mesajları ve karmaşık tel örgü çizgileri (Wireframes) yerine, sistem Unity'nin `Handles` API'sini kullanan estetik bir Taktiksel Radar sunar. Play modundayken yapay zekanın iç dünyasını anlık olarak izleyebilirsiniz:
+**🇹🇷 Türkçe:**
+Sistem, basit 0 ve 1 mantığıyla çalışmaz. Avcının görüş açısı (`Physics.Raycast` destekli) fiziksel duvarların arkasını göremez. Ancak av, görüş açısından veya duyma menzilinden kaybolduktan sonra bile, avcı avın son görüldüğü noktada kalıp **beklemeye** başlar — gerçek bir yırtıcı hayvan gibi.
 
-* **Altın Görüş Konisi & Kan Kırmızısı Radar:** Görsel ve işitsel algı alanları yarı saydam geometrik şekillerle izole edilir.
-* **Kestirimci Vektör (Predictive Line):** Hedefin hızına göre avcının pusu kuracağı $x,z$ koordinatını gerçek zamanlı gösteren kesik (dashed) siyan çizgiler.
-* **Yüzen Zihin Monitörü (Floating HUD):** Avcının başının üzerinde beliren `[ AI CORE ]` paneli, sistemin anlık kararını (`PATROLLING`, `HUNTING`, `TERMINATED`) ekrana yansıtır.
-
----
-
-## 🚀 Hızlı Başlangıç & Kurulum Rehberi
-
-Projenin arkasındaki ağır matematiği ve işitsel gerilimi kendi bilgisayarınızda test etmek için aşağıdaki adımları izleyin:
-
-### 📋 Ön Gereksinimler (Prerequisites)
-* **Unity Hub & Motoru:** Unity 6000.x veya daha güncel bir sürüm (3D Core).
-* **Git:** Projeyi klonlamak için sisteminizde Git kurulu olmalıdır.
-
-### 🛠️ Kurulum Adımları
-1. **Zihni Klonlayın:** Terminalinizi açın ve repoyu bilgisayarınıza çekin:
-   ```bash
-   git clone [https://github.com/DioBey7/Project-Hunter-AI.git](https://github.com/DioBey7/Project-Hunter-AI.git)
-
-2. **Motoru Başlatın:** Unity Hub'ı açın, Add (Ekle) butonuna tıklayarak klonladığınız proje klasörünü seçin ve projeyi başlatın. Scriptlerin derlenmesi (compilation) için birkaç saniye bekleyin.
-3. **Sahneyi Yükleyin:** Project panelinden Assets/Scenes klasörüne gidin ve Main Scene (Ana Sahne) dosyasını çift tıklayarak açın.Sahneyi Yükleyin: Project panelinden Assets/Scenes klasörüne gidin ve Main Scene (Ana Sahne) dosyasını çift tıklayarak açın.
-
-### 🔬 Test ve Gözlem (Simülasyonu Okumak)
-Oyun motorunun üst kısmındaki Play tuşuna basın ve Sahne (Scene) penceresindeki Gizmos butonunun <ins>açık</ins> olduğundan emin olun. Sistemin gücünü görmek için şu iki deneyi gerçekleştirin:
-
-* Deney 1 (İşitsel Gerilim): Hedef objeyi (Av) alın ve haritanın sessiz bölgesinden, gürültülü bölgesine (örneğin metal zemin kabul ettiğimiz alana) sürükleyin. Avcının etrafındaki kırmızı çemberin (Duyma Menzili) aniden nasıl devasa bir boyuta ulaştığını ve karakterin sinsi fısıltılarının yerini nasıl agresif bir kovalama müziğine bıraktığını gözlemleyin.
-  
-* Deney 2 (Kestirimci Matematik): Hedef objeyi sahnede hızlıca hareket ettirin. Avcının çizdiği rotanın (siyah/kırmızı lazer) sizin arkanızdan gelmediğini; aksine, hız vektörünüzü hesaplayarak doğrudan önünüzdeki mavi pusu noktasına (Interception Point) nasıl kilitlendiğini izleyin.
-  
-* Deney 3 (Deterministik Ölüm): Avcının ölümcül çapı (Catch Radius) içine bilerek girin. Sistemin bitirici vuruş sesini çaldığı an, bellek sızıntılarını önlemek adına simülasyonu motor seviyesinde (Time.timeScale = 0) nasıl dondurduğunu (TERMINATED) gözlemleyin.
+**🇬🇧 English:**
+The system doesn't work with simple 0 and 1 logic. The hunter's line-of-sight (`Physics.Raycast` powered) cannot see through physical walls. However, even after the prey disappears from view or hearing range, the hunter remains at the last seen location and **waits** — like a real predator.
 
 ---
 
-## 🎨 Kendi Oyununuza Entegrasyon (Data-Driven Architecture)
+### 3. Kinetik Akıcılık (Kinematic Smoothing) ve Optimizasyon | Kinematic Smoothing & Performance Optimization
 
-Bu sistem, herhangi bir projeye "Tak-Çalıştır" (Plug-and-Play) mantığıyla entegre edilecek şekilde esnek ve modüler yazılmıştır. `ScriptableObjects` kullanılarak oluşturulan **Hunter Profile** mimarisi sayesinde, tek satır kod değiştirmeden yüzlerce farklı düşman tipi (Hızlı, sağır, sinsi, agresif vb.) yaratabilirsiniz.
+**🇹🇷 Türkçe:**
+A* algoritmasının işlemciyi boğmasını ve "Pathfinding Paralysis" hatalarını engellemek için rota hesaplamaları her frame'de değil, **0.15 saniyelik aralıklarla** yapılır. Düşük performanslı cihazlarda bile sistem pürüzsüz çalışır.
 
-### 1. Zihin Matrisini Kurmak (Grid & Environment)
-* Sahnenize boş bir obje (Empty GameObject) açın ve `GridManager.cs` scriptini ekleyin. Haritanızın boyutlarına göre Grid sınırlarını belirleyin.
-* Haritanızdaki geçilemez engellere (Duvarlar, kayalar vb.) Inspector üzerinden yeni bir Layer oluşturup `Obstacle` katmanını atayın. `GridManager` bu engelleri otomatik olarak tarayacaktır.
-
-### 2. Avı İşaretlemek (Target Tracking)
-* Kendi oyuncu (Player) karakterinizi sahneye alın.
-* Üzerine `TargetTracker.cs` (ve klavye ile test etmek isterseniz `PreyController.cs`) scriptini ekleyin. Bu yapı, oyuncunun anlık hız vektörünü avcının kestirimci (predictive) zihnine yayınlayacaktır.
-
-### 3. Avcıyı Yaratmak (AI Instantiation)
-* Kendi 3D canavar veya katil modelinize `HunterAI.cs` scriptini ekleyin. *(Not: Script, defansif programlama gereği ihtiyaç duyduğu AudioSource ve LineRenderer bileşenlerini kendi kendine yaratacaktır).*
-* `HunterAI` scriptinin içindeki **Target** yuvasına oyuncunuzu, **Target Tracker** yuvasına ise oyuncunuzun üzerindeki takip scriptini sürükleyin.
-
-### 4. Zihni Şekillendirmek (ScriptableObject Profiles)
-* Unity proje (Project) pencerenizde sağ tıklayın ve `Create -> AI -> Hunter Profile` diyerek yeni bir veri şablonu oluşturun.
-* Avcının hızını, görüş açısını (FOV Angle), duyma menzilini ve işitsel dosyalarını (Patrol/Chase/Catch sesleri) bu profilden ayarlayın.
-* Oluşturduğunuz bu profili, avcının üzerindeki `HunterAI` scriptinin **Profile** yuvasına sürükleyin. 
-
-Artık avcınız; otonom olarak devriye gezmeye, engellerin etrafından dolanmaya ve avını avlamaya tamamen hazır.
+**🇬🇧 English:**
+To prevent A* from choking the CPU and avoid "Pathfinding Paralysis" errors, pathfinding calculations run at **0.15-second intervals** instead of every frame. The system runs smoothly even on low-end devices.
 
 ---
 
-## 📫 İletişim & Ağ (Network)
+### 4. İşitsel Gerilim Yönetimi | Audio-Driven State Machine
 
-Bu karanlık simülasyonun arkasındaki zihniyet, yazılım mühendisliği ile ses/atmosfer tasarımını birleştirmektir. Sektördeki profesyonellerle tanışmaktan, geri bildirim almaktan ve yeni ufuklara yelken açmaktan her zaman onur duyarım. Benimle aşağıdaki kanallardan iletişime geçebilirsiniz:
+**🇹🇷 Türkçe:**
+Oyunun ses miksajı doğrudan yapay zekanın sinir sistemine bağlıdır. Avcı devriye modundayken sadece karakterin sinsi fısıltıları yankılanır. Hedef algılandığında ses şiddeti artar; çatışma başladığında, oyuncunun kalbi gibi hızlanan ritimik sesler çalar.
 
-* **LinkedIn:** www.linkedin.com/in/beyza-yazıcı-400183332
-* **E-Posta:** beyza04yazici2005@gmail.com
+**🇬🇧 English:**
+The game's audio mix is directly tied to the AI's nervous system. While patrolling, only subtle whispers echo. When the target is detected, sound intensity increases; during combat, rhythmic sounds beat like the player's racing heart.
+
+---
+
+## 👁️ Siber-Optik Test Ekranı (Tactical HUD) | Cyber-Optic Test Screen
+
+Klasik `Debug.Log` konsol mesajları yerine, sistem Unity'nin `Handles` API'sini kullanan estetik bir Taktiksel Radar sunar.
+
+Instead of classic `Debug.Log` console messages, the system features an aesthetic Tactical Radar using Unity's `Handles` API.
+
+* **🇹🇷 Altın Görüş Konisi & Kan Kırmızısı Radar** | **🇬🇧 Golden Vision Cone & Crimson Radar:** Görsel ve işitsel algı alanları yarı saydam geometrik şekillerle izole edilir. / Visual and auditory perception fields are isolated with semi-transparent geometric shapes.
+
+* **🇹🇷 Kestirimci Vektör (Predictive Line)** | **🇬🇧 Predictive Vector:** Hedefin hızına göre avcının pusu kuracağı koordinatları gerçek zamanlı gösteren siyan çizgiler. / Cyan dashed lines showing the intercept point in real-time.
+
+* **🇹🇷 Yüzen Zihin Monitörü** | **🇬🇧 Floating Mind Monitor:** Avcının başının üzerinde beliren `[ AI CORE ]` paneli, sistemin anlık kararını ekrana yansıtır. / The `[ AI CORE ]` panel displays the AI's current state: `PATROLLING`, `HUNTING`, `TERMINATED`.
+
+---
+
+## 🚀 Hızlı Başlangıç & Kurulum Rehberi | Quick Start & Installation Guide
+
+### 📋 Ön Gereksinimler | Prerequisites
+
+* **Unity Hub & Motoru | Engine:** Unity 6000.x veya daha güncel / or newer
+* **Git:** Projeyi klonlamak için / For cloning the project
+
+### 🛠️ Kurulum Adımları | Installation Steps
+
+**1. Zihni Klonlayın | Clone the Mind:**
+```bash
+git clone https://github.com/DioBey7/Project-Hunter-AI.git
+```
+
+**2. Motoru Başlatın | Launch the Engine:**
+Unity Hub'ı açın, Add butonuna tıklayarak klonladığınız proje klasörünü seçin.
+Open Unity Hub, click Add, and select the cloned project folder.
+
+**3. Sahneyi Yükleyin | Load the Scene:**
+Assets/Scenes klasöründen Main Scene dosyasını açın.
+From Assets/Scenes folder, open the Main Scene file.
+
+### 🔬 Test ve Gözlem | Testing & Observation
+
+Play tuşuna basın ve şu deneyleri gerçekleştirin / Press Play and perform these experiments:
+
+**🇹🇷 Deney 1 (İşitsel Gerilim)** | **🇬🇧 Experiment 1 (Audio Tension):**
+Hedef objeyi sessiz bölgeden gürültülü bölgesine sürükleyin. Avcının etrafındaki radar büyüyerek kızarır.
+Move the target from a quiet zone to a loud zone. The hunter's radar grows and turns red.
+
+**🇹🇷 Deney 2 (Kestirimci Matematik)** | **🇬🇧 Experiment 2 (Predictive Math):**
+Hedef objeyi hızlıca hareket ettirin. Avcının çizdiği rota sizin arkanızdan gelmediğini, hız vektörünüzü tahmin ettiğini göreceksiniz.
+Move the target quickly. You'll see the hunter's path predicts your movement, not chasing behind.
+
+**🇹🇷 Deney 3 (Deterministik Ölüm)** | **🇬🇧 Experiment 3 (Deterministic Death):**
+Avcının Catch Radius içine girin. Sistem bitirici vuruş sesini çalıp simülasyonu sona erdirir.
+Enter the hunter's Catch Radius. The system plays a fatal sound and terminates the simulation.
+
+---
+
+## 🎨 Kendi Oyununuza Entegrasyon | Integration into Your Game
+
+Bu sistem, "Tak-Çalıştır" (Plug-and-Play) mantığıyla herhangi bir projeye entegre edilebilir. `ScriptableObjects` kullanılarak oluşturulan **Hunter Profile** sayesinde, kodda hiçbir değişiklik yapmadan avcının davranışını özelleştirebilirsiniz.
+
+This system can be integrated into any project with "Plug-and-Play" logic. Using `ScriptableObjects`, the **Hunter Profile** allows you to customize the AI's behavior without changing any code.
+
+### 1. Zihin Matrisini Kurmak | Setting Up the Grid
+
+🇹🇷 Sahnenize boş bir obje açın ve `GridManager.cs` scriptini ekleyin. Haritanızın boyutlarına göre Grid sınırlarını belirleyin.
+
+🇬🇧 Create an empty GameObject in your scene and attach `GridManager.cs`. Define grid boundaries based on your map size.
+
+### 2. Avı İşaretlemek | Marking the Prey
+
+🇹🇷 Oyuncu karakterinize `TargetTracker.cs` scriptini ekleyin. Bu yapı, oyuncunun hız vektörünü avcının zihnine iletir.
+
+🇬🇧 Attach `TargetTracker.cs` to your player character. This script transmits the player's velocity vector to the AI's mind.
+
+### 3. Avcıyı Yaratmak | Creating the Hunter
+
+🇹🇷 Kendi 3D model/canavar modeline `HunterAI.cs` scriptini ekleyin. Target ve Target Tracker yuvaları oyuncunuzu gösterecek şekilde ayarlayın.
+
+🇬🇧 Attach `HunterAI.cs` to your 3D model. Set the Target and Target Tracker slots to reference your player.
+
+### 4. Zihni Şekillendirmek | Shaping the AI's Mind
+
+🇹🇷 Sağ tıklayıp `Create -> AI -> Hunter Profile` seçerek yeni bir Hunter Profile oluşturun. Avcının hızı, görüş açısı (FOV), duyma menzili ve seslerini ayarlayın.
+
+🇬🇧 Right-click and select `Create -> AI -> Hunter Profile`. Configure speed, FOV angle, hearing range, and audio files.
+
+Artık avcınız otonom olarak devriye gezmeye, engellerin etrafından dolanmaya ve avını avlamaya tamamen hazır!
+
+Your hunter is now ready to patrol autonomously, navigate around obstacles, and hunt prey!
+
+---
+
+## 📫 İletişim & Ağ | Contact & Network
+
+Sektördeki profesyonellerle tanışmaktan, geri bildirim almaktan ve yaratıcı işbirliklerinden hoşlanırım.
+
+I enjoy meeting professionals, receiving feedback, and creating collaborations.
+
+* **LinkedIn:** [www.linkedin.com/in/beyza-yazıcı-400183332](https://www.linkedin.com/in/beyza-yazici-400183332)
+* **E-Posta | Email:** beyza04yazici2005@gmail.com
 * **GitHub:** [github.com/DioBey7](https://github.com/DioBey7)
 
 ---
 
-## 📄 Lisans (MIT License)
+## 📄 Lisans | License (MIT)
 
-Bu proje **MIT Lisansı** ile korunmaktadır ve açık kaynaklıdır. 
-Kısaca; bu repodaki tüm kodları, mimariyi ve sistem tasarımını kopyalamakta, değiştirmekte ve kendi kişisel veya ticari oyun projelerinizde kullanmakta tamamen özgürsünüz. Tek şart, orijinal geliştiriciye (Beyza Yazıcı) atıfta bulunulmasıdır. Daha fazla hukuki detay için reponun kök dizinindeki `LICENSE` dosyasına göz atabilirsiniz.
+Bu proje **MIT Lisansı** ile korunmaktadır ve açık kaynaklıdır.
+
+This project is protected under the **MIT License** and is open source.
+
+🇹🇷 Tüm kodları, mimariyi ve sistem tasarımını kopyalamakta, değiştirmekte ve kendi kişisel veya ticari oyun projelerinizde kullanmakta tamamen özgürsünüz. Tek şart, orijinal yazarı (BEYZA YAZICI) kredi listesinde belirtmenizdir.
+
+🇬🇧 You're free to copy, modify, and use all code, architecture, and system design in your personal or commercial game projects. The only requirement is to credit the original author (BEYZA YAZICI) in the credits.
+
+---
+
+<div align="center">
+  <p><strong>Made with 💜 and Vector Math</strong></p>
+</div>
