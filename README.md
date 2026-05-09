@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🌑 PROJECT HUNTER</h1>
+  <h1>PROJECT HUNTER</h1>
   <h3>Audio-Driven Predictive AI & Behavior Tree Simulation</h3>
   <br>
   <i>"Bir oyunun gerilimini yaratan şey düşmanın ne kadar güçlü olduğu değil; <br> nefesinizi ne kadar iyi dinlediği ve bir sonraki adımınızı ne kadar iyi tahmin ettiğidir."</i>
